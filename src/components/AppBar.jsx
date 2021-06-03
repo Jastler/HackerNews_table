@@ -6,6 +6,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,21 +23,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function ButtonAppBar({ routeLinks }) {
+export function ButtonAppBar({ route, routes }) {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={classes.root}>
       <SwipeableDrawer
-            anchor='left'
-            open={isOpen}
-            onClose={() => setIsOpen(false)}
-            onOpen={() => {}}
-          >
-            {<div>
-              {routeLinks}
-            </div>}
+        anchor="left"
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        onOpen={() => {}}
+      >
+        <List component="nav" aria-label="secondary mailbox folders">
+          {routes.map((item) => (
+            <ListItem
+              button
+              component={Link}
+              to={item}
+              onClick={() => setIsOpen(false)}
+            >
+              <ListItemText primary={item} />
+            </ListItem>
+          ))}
+        </List>
       </SwipeableDrawer>
       <AppBar position="static">
         <Toolbar>
@@ -43,7 +56,7 @@ export function ButtonAppBar({ routeLinks }) {
             />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            {route.toUpperCase()}
           </Typography>
         </Toolbar>
       </AppBar>

@@ -17,7 +17,7 @@ export function NewsTable({ news }) {
 
   return (
     <div style={{ width: '100%', margin: 'auto' }}>
-      <DataGrid rows={newsMap} columns={columns} hideFooterPagination autoHeight />
+      <DataGrid rows={newsMap} columns={columns} hideFooterPagination autoHeight onRowsScrollEnd />
     </div>
   );
 }

@@ -2,11 +2,14 @@
   display: none !important;
 }
 
-.MuiDataGrid-renderingZone {
+.MuiDataGrid-renderingZone, .MuiDataGrid-renderingZone > div {
   width: auto !important;
 }
-.MuiDataGrid-renderingZone > div {
-  width: auto !important;
+
+.MuiDataGrid-cell {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .mobile__list {
@@ -21,7 +24,7 @@
 
 .btn__sort {
   position: fixed !important;
-  top: 60px;
+  top: 120px;
   right: -45px;
   transform: rotateZ(-90deg);
 }
