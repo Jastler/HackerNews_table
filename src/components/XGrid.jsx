@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { XGrid, GridOverlay } from '@material-ui/x-grid';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import { XGrid } from '@material-ui/x-grid';
 
 const columns = [
-  { field: 'time', headerName: 'Time', width: '10%' },
+  { field: 'time', headerName: 'Time', width: '20%' },
   { field: 'title', headerName: 'Title', width: '40%' },
-  { field: 'url', headerName: 'URL', width: '50%' },
+  { field: 'url', headerName: 'URL', width: '40%' },
 ];
 
 export default function InfiniteLoadingGrid({ dispatchData, data, canLoadMore }) {
@@ -20,6 +19,9 @@ export default function InfiniteLoadingGrid({ dispatchData, data, canLoadMore })
         columns={columns}
         rows={newsMap}
         loading={false}
+        onCellClick={(cell) => {
+          if (cell.field === 'url') window.open(cell.value, '_blank').focus();
+        }}
         onRowsScrollEnd={() => {
           if (canLoadMore) {
             dispatchData();

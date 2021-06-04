@@ -30,7 +30,7 @@ export function ButtonAppBar({ route, routes }) {
   return (
     <div className={classes.root}>
       <SwipeableDrawer
-        anchor="left"
+        anchor="top"
         open={isOpen}
         onClose={() => setIsOpen(false)}
         onOpen={() => {}}
