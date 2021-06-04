@@ -1,8 +1,8 @@
 # HackerNews_table React.js and Redux
 
-AppCo was created using HTML5, CSS, Materual UI, React Hooks, and Redux.
+HackerNews_table was created using HTML5, CSS, Materual UI, React Hooks, and Redux.
 
-[Demo](https://jastler.github.io/HackerNews_table).
+[DEMO](https://jastler.github.io/HackerNews_table).
 
 ### Dependencies
 * Node v12.16.3 and higher
