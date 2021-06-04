@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import AppBar from '@material-ui/core/AppBar';
+import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,7 +12,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function ButtonAppBar({ route, routes }) {
+export function Header({ route, routes }) {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -38,6 +40,7 @@ export function ButtonAppBar({ route, routes }) {
         <List component="nav" aria-label="secondary mailbox folders">
           {routes.map((item) => (
             <ListItem
+              key={item}
               button
               component={Link}
               to={item}
@@ -50,10 +53,8 @@ export function ButtonAppBar({ route, routes }) {
       </SwipeableDrawer>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon
-              onClick={() => setIsOpen(true)}
-            />
+          <IconButton onClick={() => setIsOpen(true)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             {route.toUpperCase()}
@@ -63,3 +64,8 @@ export function ButtonAppBar({ route, routes }) {
     </div>
   );
 }
+
+Header.propTypes = {
+  route: PropTypes.string.isRequired,
+  routes: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

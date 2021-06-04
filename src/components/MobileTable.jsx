@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import Button from '@material-ui/core/Button';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -11,7 +13,7 @@ export function MobileTable({ data, dispatchData }) {
         dataLength={data.length}
         next={() => setTimeout(() => {
           dispatchData();
-        }, 1000)}
+        }, 200)}
         hasMore
         scrollThreshold="20px"
       >
@@ -34,3 +36,11 @@ export function MobileTable({ data, dispatchData }) {
     </>
   );
 }
+
+MobileTable.propTypes = {
+  dispatchData: PropTypes.func.isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    time: PropTypes.number,
+    title: PropTypes.string,
+  })).isRequired,
+};
