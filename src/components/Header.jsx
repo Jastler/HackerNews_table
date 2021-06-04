@@ -46,7 +46,7 @@ export function Header({ route, routes }) {
               to={item}
               onClick={() => setIsOpen(false)}
             >
-              <ListItemText primary={item} />
+              <ListItemText primary={item.charAt(0).toUpperCase() + item.slice(1)} />
             </ListItem>
           ))}
         </List>
